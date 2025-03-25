@@ -26,14 +26,6 @@ import Utilities.LoggerLoad;
 
 public class TryEditorDsPom {
 	
-		
-	//private WebDriver driver; // WebDriver instance
-
-////  Constructor of the Page Class
-//	// Constructor or method where WebDriver is initialized
-//    public TryEditorDsPom(WebDriver driver) {
-//        this.driver = driver;
-//    }
 	
 
 	WebDriver driver = Driver_SetUp.getDriver(); // Initialize WebDriver
@@ -148,23 +140,7 @@ public class TryEditorDsPom {
 	//	LoggerLoad.warn("No alert to handle.");
 		// }
 	}
-
-//	// Method to check if console output is displayed
-//    public boolean isConsoleOutputDisplayed() {
-//    	
-//    	WebElement consoleElement = driver.findElement(consoleOutputMsg);
-//        String outputText = consoleElement.getText();
-//        LoggerLoad.info("Console output text: " + outputText);
-//        return consoleElement.isDisplayed();
-//    }
-//     
-//    // Method to get the console output text
-//    public String getOutputText() {
-//        String consoleOutput = driver.findElement(consoleOutputMsg).getText();
-//        LoggerLoad.info("Console output text retrieved: " + consoleOutput);
-//        return consoleOutput;
-//    }
-    
+  
     
     public String getOutputText() {
         try {

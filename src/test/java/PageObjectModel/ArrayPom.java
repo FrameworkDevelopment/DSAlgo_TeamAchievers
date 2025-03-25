@@ -18,21 +18,6 @@ public class ArrayPom {
 
 	WebDriver driver = Driver_SetUp.getDriver();
 
-//	////////////////////////////
-//	private WebDriver driver; // WebDriver instance
-//    private Properties prop;
-//    
-// //  Constructor of the Page Class
-//    public ArrayPom(WebDriver driver) {
-//        if (driver == null) {
-//            throw new IllegalArgumentException("WebDriver instance cannot be null.");
-//        }
-//        this.driver = driver; // Assign the passed driver to the class-level variable
-//
-//        // Initialize all the elements in this page class
-//        this.prop = ConfigReader.initializeprop();
-//
-//        }
     
 	ExcelReader excelReader = new ExcelReader();
 	
@@ -43,11 +28,7 @@ public class ArrayPom {
 	public By basicOperationsInListsLink = By.xpath("//a[@href='basic-operations-in-lists']");
 	public By applicationsOfArrayLink = By.xpath("//a[@href='applications-of-array']");
 	
-	//Web elements of Array page -> practice Questions page links 
-	//public By searchTheArrayLink = By.xpath("//a[text()='Search the array']");
-	//public By maxConsecutiveOnes = By.xpath("//a[text()='Max Consecutive Ones']");
-	//public By findNumWithEvenNumOfDigits = By.xpath("//a[text()='Find Numbers with Even Number of Digits']");
-	
+
 	//Arrays in Python => Practice Question page web elements (four questions)
 	public By searchTheArrayLink = By.xpath("//a[@href='/question/1']");
 	public By maxConsecutiveOnes = By.xpath("//a[@href='/question/2']");

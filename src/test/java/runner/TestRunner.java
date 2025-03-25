@@ -12,7 +12,7 @@ import org.testng.annotations.Parameters;
 import Utilities.ConfigReader;
 
 @CucumberOptions(
-	features =   "src/test/resources/features/", 
+	features =   "src/test/resources/features", 
 		  
         glue = {"StepDefinitions", "AppHooks"}, // Package containing step definitions
                monochrome = true, 
@@ -30,7 +30,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	
 
 	    @Override
-    @DataProvider(parallel = true) // Run tests in parallel with true 
+    @DataProvider(parallel = false) // Run tests in parallel with true 
     public Object[][] scenarios() {
         return super.scenarios(); // Get the scenarios from Cucumber
     }

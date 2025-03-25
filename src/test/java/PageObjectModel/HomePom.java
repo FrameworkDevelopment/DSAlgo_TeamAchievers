@@ -15,13 +15,6 @@ import Utilities.ConfigReader;
 public class HomePom {
 	
 
-	//private WebDriver driver; // WebDriver instance
-//
-//  // Constructor or method where WebDriver is initialized
-//    public HomePom(WebDriver driver) {
-//        this.driver = driver;
-//    }
-
 	public WebDriver driver = Driver_SetUp.getDriver();
     
 	// Create a WebDriverWait instance with Duration
@@ -66,14 +59,6 @@ public class HomePom {
 	}
 
 
-	/*
-	 * public void openURL() { System.out.println("Inside openURL");
-	 * driver.get(ConfigReader.getUrl());
-	 * 
-	 * }
-	 */
-    
-
     public void openHomeURL() {
     	System.out.println("Inside openURL");
     	driver.get(ConfigReader.getUrlHome());
@@ -97,14 +82,7 @@ public class HomePom {
 		
 	}
     
-  
-	/*
-	 * public void ClickHomePageGetStartedButton() {
-	 * 
-	 * System.out.println("Inside ClickHomePageGetStartedButton");
-	 * driver.findElement(getStartedButton).click(); }
-	 */
-    
+      
  	public String getTextForElement(By locator) {
 		String elementText = driver.findElement(locator).getText();
 		return elementText;
@@ -127,7 +105,7 @@ public class HomePom {
 
 
 	public void openUrlStack() {
-		// TODO Auto-generated method stub
+		
     	driver.get(ConfigReader.getUrlStack());
 		
 	}
