@@ -46,7 +46,7 @@ public DataStructureIntroPom dsintropage = new DataStructureIntroPom();
 
 	public WebDriver driver = Driver_SetUp.getDriver();
 	// Create a logger instance
-	private static final Logger logger = LoggerFactory.getLogger(Page.class);
+	private static final Logger logger = LoggerFactory.getLogger(Step_GraphPage.class);
 
 	
 	
