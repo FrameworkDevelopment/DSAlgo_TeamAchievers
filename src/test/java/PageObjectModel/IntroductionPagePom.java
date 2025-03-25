@@ -17,13 +17,6 @@ import Utilities.LoggerLoad;
 
 public class IntroductionPagePom {
 	
-	
-//   private WebDriver driver; // WebDriver instance
-//  // Constructor or method where WebDriver is initialized
-//    public IntroductionPagePom(WebDriver driver) {
-//        this.driver = driver;
-//    }
-	
 	public WebDriver driver = Driver_SetUp.getDriver();
 
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(50000)); // Timeout in second
@@ -31,8 +24,6 @@ public class IntroductionPagePom {
 	// Web elements of the Introduction page
 	public By numpyNinja = By.cssSelector("a[href='/home']");
 	public By dataStructure = By.cssSelector("a.dropdown-toggle");
-	//public By dataStructure = By.cssSelector("//a[@data-toggle='dropdown']");
-	//public By dataStructure =  By.xpath("//a[contains(@class, 'dropdown-toggle')]");
 	public By dsDropdown = By.cssSelector("a.dropdown-item");
 
 	// Web Elements for each drop down items
@@ -74,64 +65,6 @@ public class IntroductionPagePom {
 
 	// Authentication page on Introduction Home page before log in
 	public By authenticationmsg = By.cssSelector("div.alert.alert-primary");
-
-//	// Method to click on the dropdown toggle
-//	public void clickDropdownToggle() {
-//		
-//		 // Wait for the dropdown toggle element to be clickable
-//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//	    
-//	    // Wait until the element is clickable
-//	    WebElement toggle = wait.until(ExpectedConditions.elementToBeClickable(dataStructure));
-//	    
-//	 // Scroll the element into view if necessary
-//	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", toggle);
-//
-//	    // Click the dropdown toggle
-//	    toggle.click();
-//	}
-	
-	
-//	// Method to click on the dropdown toggle
-//	public void clickDropdownToggle() {
-//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  // Increase wait time if needed
-//	    
-//	    // Try to scroll the element into view if it's not visible
-//	    WebElement toggle = driver.findElement(By.cssSelector("a.dropdown-toggle"));
-//	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", toggle);
-//
-//	    // Wait for the element to be visible
-//	    wait.until(ExpectedConditions.visibilityOf(toggle));
-//
-//	    // Wait for the element to be clickable
-//	    wait.until(ExpectedConditions.elementToBeClickable(toggle));
-//	    
-//	    // Click the dropdown toggle
-//	    toggle.click();
-//	}
-	
-	// Method to click on the dropdown toggle
-//	public void clickDropdownToggle() {
-//		
-//		WebElement dataStructure = wait
-//				.until(ExpectedConditions.visibilityOfElementLocated(By.className("dataStructure")));
-//	
-//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  // Increase wait time if needed
-//	    
-//	    // Try to scroll the element into view if it's not visible
-//	    WebElement toggle = driver.findElement(By.cssSelector("a.dropdown-toggle"));
-//	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", toggle);
-//
-//	    // Wait for the element to be visible
-//	    wait.until(ExpectedConditions.visibilityOf(toggle));
-//
-//	    // Wait for the element to be clickable
-//	    wait.until(ExpectedConditions.elementToBeClickable(toggle));
-//	    
-//	    // Click the dropdown toggle
-//	    toggle.click();
-//	}
-	
 	
 	public void clickDropdownToggle() {
 	    // Initialize WebDriverWait with a 20-second timeout
@@ -246,9 +179,6 @@ public class IntroductionPagePom {
 	    }
 	}
 
-//	public void authenticationMsgDisplay(){
-//		WebElement authMessage = driver.findElement(authenticationmsg);
-
 	// Methods to click on Get Started button for all 6 elements on the Introduction
 	// or Home page
 	public void clickOnDataStructuresGetStartedBtn() {
@@ -298,33 +228,18 @@ public class IntroductionPagePom {
 	}
 
 	public void clickOnSignInlink() {
-		//driver.findElement(signInLink).click();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-		//WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/login']")));
-//		WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/login']")));
-		//WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Login")));
-		WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/login']")));
 		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+		WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/login']")));
 		signInLink.click();
 	}
 
-//	public void clickDropdownOptionByText(String optionText) {
-//	    List<WebElement> dropdownOptions = dsDropdown.findElements(By.tagName("li")); // Adjust locator if needed
-//	    for (WebElement option : dropdownOptions) {
-//	        if (option.getText().trim().equals(optionText)) {
-//	            option.click(); // Click the matching option
-//	            return;
-//	        }
-//	    }
-//	    throw new NoSuchElementException("Option '" + optionText + "' not found in the dropdown.");
-//	}
 
-	
 	//get title
 	public String getPageTitle() {
 		String elementText = driver.getTitle();
 		return elementText;
 	}
-//	
+
 
 }

@@ -13,11 +13,11 @@ public class GraphPom {
 	   
  public WebDriver driver = Driver_SetUp.getDriver();
 	
-	By graph_getStarted = By.xpath("//a[@href='graph']");
-	By graph_topicsCovered = By.linkText("Graph");
-	By graphRepresentations = By.xpath("//a[@href='graph-representations']");
-	By graphPractice = By.xpath("//a[@href='/graph/practice']");
-    By clickTryhere = By.linkText("Try here>>>");
+	private By graph_getStarted = By.xpath("//a[@href='graph']");
+	private By graph_topicsCovered = By.linkText("Graph");
+	private By graphRepresentations = By.xpath("//a[@href='graph-representations']");
+	private By graphPractice = By.xpath("//a[@href='/graph/practice']");
+    private By clickTryhere = By.linkText("Try here>>>");
 
 public void getStartedGraph() throws InterruptedException {
 	

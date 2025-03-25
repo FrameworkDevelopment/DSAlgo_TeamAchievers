@@ -18,21 +18,21 @@ public class TreePom {
 
 	// Tree Page general elements
 
-	By overviewofTrees = By.xpath("//a[@href='overview-of-trees']");
-	By terminologies = By.linkText("Terminologies");
-	By typesofTrees = By.xpath("//a[@href='types-of-trees']");
-	By treeTraversals = By.xpath("//a[@href='tree-traversals']");
-	By traversalsIllustration = By.xpath("//a[@href='traversals-illustration']");
-	By binaryTrees=By.xpath("//a[@href='binary-trees']");
-	By typesofBinaryTrees=By.xpath("//a[@href='types-of-binary-trees']");
-	By implementationInPython=By.xpath("//a[@href='implementation-in-python']");
-	By binaryTreeTraversals=By.xpath("//a[@href='binary-tree-traversals']");
-	By implementationofBinaryTrees=By.xpath("//a[@href='implementation-of-binary-trees']");
-	By applicationsofBinaryTrees=By.xpath("//a[@href='applications-of-binary-trees']");
-	By binarySearchTrees=By.xpath("//a[@href='binary-search-trees']");
-	By implementationOfbst=By.xpath("//a[@href='implementation-of-bst']");
-	By practiceQuestions = By.linkText("Practice Questions");
-	By clickTryhere = By.linkText("Try here>>>");
+	private By overviewofTrees = By.xpath("//a[@href='overview-of-trees']");
+	private By terminologies = By.linkText("Terminologies");
+	private By typesofTrees = By.xpath("//a[@href='types-of-trees']");
+	private By treeTraversals = By.xpath("//a[@href='tree-traversals']");
+	private By traversalsIllustration = By.xpath("//a[@href='traversals-illustration']");
+	private By binaryTrees=By.xpath("//a[@href='binary-trees']");
+	private By typesofBinaryTrees=By.xpath("//a[@href='types-of-binary-trees']");
+	private By implementationInPython=By.xpath("//a[@href='implementation-in-python']");
+	private By binaryTreeTraversals=By.xpath("//a[@href='binary-tree-traversals']");
+	private By implementationofBinaryTrees=By.xpath("//a[@href='implementation-of-binary-trees']");
+	private By applicationsofBinaryTrees=By.xpath("//a[@href='applications-of-binary-trees']");
+	private By binarySearchTrees=By.xpath("//a[@href='binary-search-trees']");
+	private By implementationOfbst=By.xpath("//a[@href='implementation-of-bst']");
+	private By practiceQuestions = By.linkText("Practice Questions");
+	private By clickTryhere = By.linkText("Try here>>>");
 
 	
 	public void getStartedTree() throws InterruptedException {

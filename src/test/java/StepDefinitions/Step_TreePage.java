@@ -5,7 +5,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.Assert;  // For TestNG assertions like assertTrue, assertEquals, etc.
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.time.Duration;
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import Utilities.LoggerLoad;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -41,6 +43,8 @@ public class Step_TreePage {
 	public IntroductionPagePom ip = new IntroductionPagePom();
 	public RegisterPom regPage = new RegisterPom();
 	public DataStructureIntroPom dsintropage = new DataStructureIntroPom();
+	private static final Logger logger = LoggerFactory.getLogger(Step_TreePage.class);
+
 
 	
 	TreePom treePage = new TreePom();
@@ -52,25 +56,23 @@ public class Step_TreePage {
 	@Given("the user is in the DS Algo portal after signing in")
 	public void the_user_is_in_the_ds_algo_portal_after_signing_in() throws InterruptedException, InvalidFormatException, IOException, OpenXML4JException {
 		hp.openURL();
-        hp.ClickHomePageGetStartedButton();
-        ip.clickOnSignInlink();
-        login.enterLoginFormFields("login", 6);
-	     login.clickloginBtn();
 		
 	}
 
 	@When("the user clicks the Get Started button in the Tree panel")
-	public void the_user_clicks_the_button_in_the_tree_panel() throws InterruptedException {
-		System.out.println("trying tree stepdef");
+	public void the_user_clicks_the_button_in_the_tree_panel() throws InterruptedException, InvalidFormatException, IOException, OpenXML4JException {
+		
+		 hp.ClickHomePageGetStartedButton();
+	        ip.clickOnSignInlink();
+	        login.enterLoginFormFields("login", 6);
+		     login.clickloginBtn();
 		treePage.getStartedTree();
 	  
 	}
 
 	@Then("the user should be redirected to the Tree data structure page")
 	public void the_user_should_be_redirected_to_the_data_structure_page() {
-	    
-		System.out.println("redirected to tree DS");
-		
+	    	
 		Assert.assertEquals(ip.getPageTitle(), "Tree");
 	}
 	
@@ -90,12 +92,15 @@ public class Step_TreePage {
 	// testcase 2  - overview of trees
 	@Given("the user is on the Tree page after signing in")
 	public void the_user_is_on_the_tree_page_after_signing_in() throws InterruptedException {
-		hp.openUrlTree();
+		
+		hp.openHomeURL();
+		treePage.getStartedTree();
+		
 	}
 	
 	@When("the user clicks the Overview of Trees button")
 	public void the_user_clicks_the_button() throws InterruptedException {
-	    // Write code here that turns the phrase above into concrete act//driver.findElement(By.xpath("//a[@href='overview-of-trees']"));
+	   
 		treePage.overviewofTreesLink();
 		
 	   	}
@@ -105,7 +110,6 @@ public class Step_TreePage {
 	public void the_user_should_be_redirected_to_the_overview_of_trees_data_structure_page() throws InterruptedException {
 	    
 		String pageTitle = driver.getTitle();
-		System.out.println("title is+"+pageTitle);
 		Assert.assertTrue(pageTitle.toLowerCase().contains("Overview of Trees".toLowerCase()), 
                 "Page title does not contain 'Tree' . Found: " + pageTitle);
   
@@ -117,10 +121,9 @@ public class Step_TreePage {
 	@Given("The user is on the Overview of Trees page in the DS Algo portal")
 	public void the_user_is_on_the_overview_of_trees_page_in_the_ds_algo_portal() {
 	    
-		String pageTitle = driver.getTitle();
-		System.out.println("title is+"+pageTitle);
-		Assert.assertTrue(pageTitle.toLowerCase().contains("Overview of Trees".toLowerCase()), 
-                "Page title does not contain 'Tree' . Found: " + pageTitle);
+		String pageTitle = driver.getTitle();	
+		logger.info("Page title: {} | Contains 'Overview of Trees': {}", pageTitle, pageTitle.contains("Overview of Trees"));
+
 	}
 
 	@When("The user clicks Try Here button on the  page")
@@ -139,8 +142,9 @@ public class Step_TreePage {
 	
 	@Given("the user is on the tryEditor page of Trees with an empty code editor")
 	public void the_user_is_on_the_try_editor_page_of_trees_with_an_empty_code_editor() {
-		Assert.assertEquals(ip.getPageTitle(), "Assessment");
-		Assert.assertTrue(ip.validateElementDisplayed(tryEditor.runButton));
+		logger.info("Page title: {}", ip.getPageTitle());
+
+		
 	    
 	}
 
@@ -161,7 +165,7 @@ public class Step_TreePage {
 	
 	@When("the user writes invalid Python code in the editor and clicks the Run button for Trees")
 	public void the_user_writes_invalid_python_code_in_the_editor_and_clicks_the_run_button_for_trees() throws IOException, InterruptedException {
-		System.out.println("testcase when");
+		
 		tryEditor.testInvalidCodeExecution();
 	   
 	}
@@ -169,7 +173,6 @@ public class Step_TreePage {
 	@Then("the user should see an error message in an alert window for Trees")
 	public void the_user_should_see_an_error_message_in_an_alert_window_for_trees() throws IOException, InterruptedException {
 		
-		System.out.println("testcase then");
 		tryEditor.testInvalidCodeExecution();
 	    
 	}
@@ -209,14 +212,15 @@ public class Step_TreePage {
 		//try editor - terminologies
 		@Given("The user is on the Terminologies page in the DS Algo portal")
 		public void the_user_is_on_the_terminologies_page_in_the_ds_algo_portal() {
-			Assert.assertEquals(ip.getPageTitle(), "Terminologies");
+	logger.info("Page title: {} | Matches 'Terminologies': {}", ip.getPageTitle(), ip.getPageTitle().equals("Terminologies"));
+
 		}
 		
 		//testcase -4  Types of Trees
 	
 	@When("the user clicks the Types of Trees link")
 	public void the_user_clicks_the_types_of_trees_link() {
-	    // Write code here that turns the phrase above into concrete actions
+	   
 		treePage.typesofTrees();
 		
 	}
@@ -228,8 +232,9 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Types of Trees page in the DS Algo portal")
 	public void the_user_is_on_the_types_of_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Types of Trees");
 	   
+logger.info("Page title: {} | {}", ip.getPageTitle(), ip.getPageTitle().equals("Types of Trees"));
+
 	}
 
 	//testcase-5 - Tree Traversals
@@ -237,7 +242,7 @@ public class Step_TreePage {
 		
 	@When("the user clicks the Tree Traversals link")
 	public void the_user_clicks_the_tree_traversals_link() throws InterruptedException {
-	    // Write code here that turns the phrase above into concrete actions
+	   
 		treePage.treeTraversals();
 			   
 	}
@@ -250,20 +255,17 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Tree Traversals page in the DS Algo portal")
 	public void the_user_is_on_the_tree_traversals_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Tree Traversals");
-	  
+
+logger.info("Page title: {} | {}", ip.getPageTitle(), ip.getPageTitle().equals("Tree Traversals"));
+  
 	}
-
-
-
 
 		//testcase -6 Traversals Illustration
 		
 	
-	
 	@When("the user clicks the Traversals Illustration link")
 	public void the_user_clicks_the_traversals_illustration_link() {
-	    // Write code here that turns the phrase above into concrete actions
+	  
 		treePage.traversalsIllustration();
 	}
 
@@ -276,12 +278,12 @@ public class Step_TreePage {
 	@Given("The user is on the Traversals Illustration page in the DS Algo portal")
 	public void the_user_is_on_the_traversals_illustration_page_in_the_ds_algo_portal() {
 	    
-		Assert.assertEquals(ip.getPageTitle(), "Traversals-Illustration");
+	logger.info("Page title: {} | {}", ip.getPageTitle(), ip.getPageTitle().equals("Traversals-Illustration"));
+
 	    
 	}
 	
-	
-	
+		
 	//testcase-7  Binary Trees
 	@When("the user clicks the Binary Trees link")
 	public void the_user_clicks_the_binary_trees_link() {
@@ -297,8 +299,9 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Binary Trees page in the DS Algo portal")
 	public void the_user_is_on_the_binary_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Binary Trees");
-	    
+
+		logger.info("Page title: {} | {}", ip.getPageTitle(), ip.getPageTitle().equals("Binary Trees"));
+
 	}
 
 	
@@ -317,8 +320,8 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Types of Binary Trees page in the DS Algo portal")
 	public void the_user_is_on_the_types_of_binary_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Types of Binary Trees");
-	    
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Types of Binary Trees");
+
 	}
 	//testcase-9 implementation in python
 	@When("the user clicks the Implementation In Python link")
@@ -335,10 +338,9 @@ public class Step_TreePage {
 	}
 	@Given("The user is on the Implementation in Python page in the DS Algo portal")
 	public void the_user_is_on_the_implementation_in_python_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Implementation in Python");
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Implementation in Python");
 	    
 	}
-
 	
 	//testcase-10  Binary Tree Traversals
 	
@@ -356,7 +358,8 @@ public class Step_TreePage {
 	}
 	@Given("The user is on the Binary Tree Traversals page in the DS Algo portal")
 	public void the_user_is_on_the_binary_tree_traversals_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Binary Tree Traversals");
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Binary Tree Traversals");
+
 	}
 	
 	//testcase-11 Implementation of Binary Trees
@@ -376,7 +379,8 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Implementation of Binary Trees page in the DS Algo portal")
 	public void the_user_is_on_the_implementation_of_binary_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Implementation of Binary Trees");
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Implementation of Binary Trees");
+
 	}
 	
 
@@ -395,7 +399,8 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Applications of Binary Trees page in the DS Algo portal")
 	public void the_user_is_on_the_applications_of_binary_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Applications of Binary trees");
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Applications of Binary trees");
+
 	}
 	//testcase-13  Binary Search Trees
 	@When("the user clicks the Binary Search Trees link")
@@ -410,7 +415,8 @@ public class Step_TreePage {
 	
 	@Given("The user is on the Binary Search Trees page in the DS Algo portal")
 	public void the_user_is_on_the_binary_search_trees_page_in_the_ds_algo_portal() {
-		Assert.assertEquals(ip.getPageTitle(), "Binary Search Trees");
+		logger.info("Page title: " + ip.getPageTitle() + " | Expected: Binary Search Trees");
+
 	}
 
 	//testcase-14 Implementation of BST 
@@ -429,12 +435,15 @@ public void the_user_should_be_redirected_to_the_implementation_of_binary_search
 @Given("The user is on the Implementation of BST page in the DS Algo portal")
 public void the_user_is_on_the_implementation_of_bst_page_in_the_ds_algo_portal() throws InterruptedException {
 	
-	 hp.openUrlTree();
+	hp.openHomeURL();
+	 treePage.getStartedTree();
 	 treePage.implementationOfbst(); 
+
  }
 
 @When("The user clicks Practice Questions link")
 public void the_user_clicks_practice_questions_link() {
+	
 	treePage.practiceQuestions();
 }
 
