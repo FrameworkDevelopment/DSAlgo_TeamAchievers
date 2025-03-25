@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import DriverManager.Driver_SetUp;
 import Utilities.ConfigReader;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
@@ -19,7 +20,7 @@ public class Hooks {
 	
 	
 	// This hook runs before all scenarios to initialize the WebDriver
-    @BeforeAll
+    @Before
     public static void setUp() throws Exception {
         // Load the configuration values from config.properties
         ConfigReader.loadConfig();
@@ -31,7 +32,7 @@ public class Hooks {
         }
 
         // Initialize the WebDriver based on the browser type
-        driver = Driver_SetUp.initializeBrowser(browser);
+        Driver_SetUp.initializeBrowser(browser);
 
         // Validate URL exists in config file
         String url = ConfigReader.getUrl();
@@ -40,7 +41,8 @@ public class Hooks {
         }
 
         // Navigate to the base URL
-        driver.get(url);
+        //driver.get(url);
+        Driver_SetUp.getDriver().get(url);
     }
     
 
@@ -48,25 +50,23 @@ public class Hooks {
     
     @After
     public void tearDown(Scenario scenario) {
-    	 if (scenario.isFailed()) {
-             // Capture screenshot if the scenario failed
-             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-             
-             // Attach the screenshot to the Allure report
-             Allure.addAttachment(scenario.getName() + " - Screenshot", new ByteArrayInputStream(screenshot));
-         }
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) Driver_SetUp.getDriver()).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment(scenario.getName() + " - Screenshot", new ByteArrayInputStream(screenshot));
+        }
 
-         if (driver != null) {
-             // Close the browser after the test
-             Driver_SetUp.closeDriver();
-         }
-     }
-    // Getter for WebDriver (useful in step definitions)
-    public static WebDriver getDriver() {
-        return driver;
+        Driver_SetUp.closeDriver();
+        
     }
     
-    
 }
+        
+//    // Getter for WebDriver (useful in step definitions)
+//    public static WebDriver getDriver() {
+//        return driver;
+//    }
+//    
+//    
+//}
     
    
