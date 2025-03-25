@@ -10,14 +10,14 @@ public class StackPom {
 	
 public WebDriver driver = Driver_SetUp.getDriver();
 	
-	By Stack_getStarted = By.xpath("//a[@href='stack']");
+private	By Stack_getStarted = By.xpath("//a[@href='stack']");
 	
-	By OperationsinStack = By.linkText("Operations in Stack");
-	 By clickTryhere = By.linkText("Try here>>>");
+private By OperationsinStack = By.linkText("Operations in Stack");
+private	 By clickTryhere = By.linkText("Try here>>>");
 
-		By StackRepresent = By.linkText("Implementation");
-		By StackApplications = By.linkText("Applications");
-		By StackPractice =  By.linkText("Practice Questions");
+private		By StackRepresent = By.linkText("Implementation");
+private		By StackApplications = By.linkText("Applications");
+private		By StackPractice =  By.linkText("Practice Questions");
 
 
 
