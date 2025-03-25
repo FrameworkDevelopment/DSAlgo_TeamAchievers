@@ -10,7 +10,6 @@ Feature: Graph
     When The user selects graph item from the drop down menu
     Then the user must be redirected to the Graph data structure page
     
-    
     Scenario: Verify that the user is able to navigate to the topics Graph page
    Given the user is on the Graph page after signing in
     When the user clicks the Graph link
