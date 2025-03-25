@@ -47,17 +47,17 @@ public DataStructureIntroPom dsintropage = new DataStructureIntroPom();
 	public void the_user_is_in_the_home_page_after_signing_in() throws InvalidFormatException, IOException, OpenXML4JException, InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		hp.openURL();
-        hp.ClickHomePageGetStartedButton();
-        ip.clickOnSignInlink();
-        login.enterLoginFormFields("login", 6);
-	     login.clickloginBtn();
+      
 	     
 	}
 	
 
 	@When("the user clicks the Get Started button in the Stack Panel")
-	public void the_user_clicks_the_get_started_button_in_the_Stack_panel() throws InterruptedException {
-	    
+	public void the_user_clicks_the_get_started_button_in_the_Stack_panel() throws InterruptedException, InvalidFormatException, IOException, OpenXML4JException {
+		  hp.ClickHomePageGetStartedButton();
+	        ip.clickOnSignInlink();
+	        login.enterLoginFormFields("login", 6);
+		     login.clickloginBtn();
 		StackPage.getStartedStack();
 	   
 	}

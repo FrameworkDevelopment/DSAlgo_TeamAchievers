@@ -9,14 +9,14 @@ public class QueuePom {
 	
 public WebDriver driver = Driver_SetUp.getDriver();
 	
-	By Queue_getStarted = By.xpath("//a[@href='queue']");
-	By OperationsinQueue = By.linkText("Implementation of Queue in Python");
-	By QueueRepresent = By.linkText("Implementation using collections.deque");
-	By QueueArray = By.linkText("Implementation using array");
-	By QueueOperations=  By.linkText("Queue Operations");
-	By QueueRepresentations = By.xpath("//a[@href='Queue-representations']");
-	By QueuePractice =  By.linkText("Practice Questions");
-    By clickTryhere = By.linkText("Try here>>>");
+private By Queue_getStarted = By.xpath("//a[@href='queue']");
+private	By OperationsinQueue = By.linkText("Implementation of Queue in Python");
+private	By QueueRepresent = By.linkText("Implementation using collections.deque");
+private	By QueueArray = By.linkText("Implementation using array");
+private	By QueueOperations=  By.linkText("Queue Operations");
+private	By QueueRepresentations = By.xpath("//a[@href='Queue-representations']");
+private	By QueuePractice =  By.linkText("Practice Questions");
+private By clickTryhere = By.linkText("Try here>>>");
 
 public void getStartedQueue() throws InterruptedException {
 	
