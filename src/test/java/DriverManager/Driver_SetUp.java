@@ -19,7 +19,7 @@ public class Driver_SetUp {
             return threadDriver.get();  // Return the already initialized driver if it exists
         }
 
-        WebDriver driver = null;
+        WebDriver driver;
 
         // Initialize WebDriver based on the specified browser
         if (browser.equalsIgnoreCase("chrome")) {
@@ -39,19 +39,19 @@ public class Driver_SetUp {
 
         // Store the driver in ThreadLocal for the current thread
         threadDriver.set(driver);  // This will ensure it's only set once per thread
-        return driver;
+         return driver;
     }
 
     // Method to close the WebDriver instance (close the browser)
     public static void closeDriver() {
         WebDriver driver = threadDriver.get();
-        if (driver != null) {
-            //driver.quit(); // Close the browser window
-            //threadDriver.remove(); // Remove driver from ThreadLocal after quitting
-        	System.out.println("close");
-        }
+//        if (driver != null) {
+//            driver.quit(); // Close the browser window
+//            threadDriver.remove(); // Remove driver from ThreadLocal after quitting
+//        	System.out.println("close");
+     //   }
+//}
     }
-
     // Method to get the WebDriver instance for the current thread
     public static synchronized WebDriver getDriver() {
         return threadDriver.get();
