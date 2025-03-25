@@ -12,7 +12,7 @@ import org.testng.annotations.Parameters;
 import Utilities.ConfigReader;
 
 @CucumberOptions(
-	features =   "src/test/resources/features/UC04_dataStructureIntro.feature", 
+	features =   "src/test/resources/features/", 
 		  
         glue = {"StepDefinitions", "AppHooks"}, // Package containing step definitions
                monochrome = true, 
