@@ -22,14 +22,6 @@ import Utilities.ExcelReader;
 
 public class TryEditorPage {
 	
-	//private WebDriver driver; // WebDriver instance
-
-////  Constructor of the Page Class
-//	// Constructor or method where WebDriver is initialized
-//    public TryEditorPage(WebDriver driver) {
-//        this.driver = driver;
-//    }
-
    public WebDriver driver = Driver_SetUp.getDriver();
 
     // Locators for elements on the Try Editor page

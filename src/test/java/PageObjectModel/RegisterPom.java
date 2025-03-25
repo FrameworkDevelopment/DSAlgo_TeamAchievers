@@ -22,23 +22,6 @@ import Utilities.ExcelReader1;
 
 public class RegisterPom {
 	
-////////////////////
-	
-//	private WebDriver driver; // WebDriver instance
-//    private Properties prop;
-//    
-// //  Constructor of the Page Class
-//    public RegisterPom(WebDriver driver) {
-//        if (driver == null) {
-//            throw new IllegalArgumentException("WebDriver instance cannot be null.");
-//        }
-//        this.driver = driver; // Assign the passed driver to the class-level variable
-//
-//        // Initialize all the elements in this page class
-//        this.prop = ConfigReader.initializeprop();
-//    }
-
-	///////////////////
 	
 	WebDriver driver = Driver_SetUp.getDriver();
 	ExcelReader1 excelReader1 = new ExcelReader1();
@@ -144,23 +127,6 @@ public class RegisterPom {
 		this.clickRegisterLink_getStartedPage();
 	}
 
-//    //validate error message returned in the browser for invalid or missing fields 
-//	public String switchToElementAndGetValidationMessage() {
-//		WebElement activeElement = driver.switchTo().activeElement();
-//		
-////		//adding null check before printing active element 
-////		if (activeElement != null) {
-////		    System.out.println("Active element: " + activeElement);
-////		} else {
-////		    System.out.println("Active element is null.");
-////		}
-////		
-//		//System.out.println("Active element: " + activeElement);
-//		
-//		String actualAlertMsg = activeElement.getAttribute("validationMessage");
-//		 System.out.println("ValidationMessage" + actualAlertMsg);
-//		return actualAlertMsg;
-//	}
 	
 	public String switchToElementAndGetValidationMessage() {
 	    WebElement activeElement = null;

@@ -13,16 +13,10 @@ import Utilities.ExcelReader;
 
 public class DataStructureIntroPom {
 	
-//    private WebDriver driver; // WebDriver instance
-//  // Constructor or method where WebDriver is initialized
-//    public DataStructureIntroPom(WebDriver driver) {
-//        this.driver = driver;
-//    }
 
 	WebDriver driver = Driver_SetUp.getDriver();
 	ExcelReader excelReader = new ExcelReader();
 	
-//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	//Web Elements in the DataStructures page 
 	public By dsGetStartedBtn = By.xpath("//a[text()='Get Started' and contains(@href, 'data-structures-introduction')]");
@@ -63,30 +57,10 @@ public class DataStructureIntroPom {
 		return driver.findElement(locator).isDisplayed();
 	}
 	
-	//getpage title 
-//	public String getPageTitle() {
-//		return driver.getTitle();
-//	}
 	
 	public String validatePageTitle() {
 		return driver.getTitle();
 	}
-	
-	//	public boolean validateElementDisplayed(WebElement element) {
-//	    try {
-//	        // Check if the element is displayed
-//	        return element.isDisplayed();
-//	    } catch (NoSuchElementException e) {
-//	        // If the element is not found, return false
-//	        return false;
-//	    }
-//	}
-	
-	//Text for the element that is displayed
-//	 public String getTextForElement(By locator) {
-//	    	String elementText = driver.findElement(locator).getText();
-//	    	return elementText;
-//	    }
 	
 		public String getTextForElement(By locator) {
 		String elementText = driver.findElement(locator).getText();

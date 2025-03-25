@@ -46,14 +46,14 @@ public class IntroductionPagePom {
 	public By queueCardTitle = By.xpath("//h5[text()='Queue']");
 	public By treeCardTitle = By.xpath("//h5[text()='Tree']");
 
-//////
+
 	public By getStartedButtonOnCard = By.cssSelector("a.btn-primary");
 	public By signInLink = By.cssSelector("a[href='/login']");
 	
 	public By registerLink = By.cssSelector("a[href='/register']");
 
 	// Get Started button of all the data structures on the Introduction page / Home
-	// page
+	
 	public By dsIntroductionGetStartedBtn = By.cssSelector("a[href='data-structures-introduction']");
 	public By arrayGetStartedBtn = By.cssSelector("a[href='array']");
 	public By linkedListGetStartedBtn = By.cssSelector("a[href='linked-list']");
@@ -114,11 +114,6 @@ public class IntroductionPagePom {
 		System.out.println("Dropdown selected1 -->" + driver.findElement(dropDownStackItem));
 	}
 
-	// public void clickDropdownItemStack() {
-	// WebElement stackItem = driver.findElement(dropDownStackItem);
-//        stackItem.click();
-//        System.out.println("Dropdown selected1 -->"+driver.findElement(dropDownStackItem));
-//    }
 
 	// Method to click on the 'Queue' drop down item
 	public void clickDropdownItemQueue() {
@@ -164,10 +159,6 @@ public class IntroductionPagePom {
 		return elementCount;
 	}
 
-	// Element Displayed
-//	public Boolean validateElementDisplayed(By locator) {
-//		return driver.findElement(locator).isDisplayed();
-//	}
 	
 	public Boolean validateElementDisplayed(By locator) {
 	    try {
