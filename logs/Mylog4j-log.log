@@ -12874,3 +12874,9 @@ Session ID: 31536293ad4abd32886a84425068dbe3
 [INFO ] 2025-03-20 20:28:33.265 [main] LoggerLoad - Clicked the Run button.
 [INFO ] 2025-03-20 20:28:33.306 [main] LoggerLoad - Console output text retrieved: hello
 [INFO ] 2025-03-20 20:28:33.331 [main] LoggerLoad - Console output text retrieved: hello
+[INFO ] 2025-03-25 00:13:09.864 [main] LoggerLoad - Clicking the Array Get Started link
+[INFO ] 2025-03-25 00:13:11.532 [main] LoggerLoad - Clicking the Linked List Get Started link
+[INFO ] 2025-03-25 00:13:13.651 [main] LoggerLoad - Clicking the Stack Get Started link
+[INFO ] 2025-03-25 00:13:14.783 [main] LoggerLoad - Clicking the Queue Get Started link
+[INFO ] 2025-03-25 00:13:16.572 [main] LoggerLoad - Clicking the Tree Get Started link
+[INFO ] 2025-03-25 00:13:19.190 [main] LoggerLoad - Clicking the Graph Get Started link
