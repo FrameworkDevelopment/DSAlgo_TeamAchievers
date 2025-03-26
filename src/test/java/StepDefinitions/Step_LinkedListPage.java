@@ -1,14 +1,7 @@
 package StepDefinitions;
 
-import static org.testng.Assert.assertEquals;
-
-import java.time.Duration;
 import java.util.concurrent.TimeoutException;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import AppHooks.Hooks;
@@ -35,8 +28,7 @@ public class Step_LinkedListPage {
 	@When("The user clicks the Get Started button of Linked List section")
 	public void the_user_clicks_the_get_started_button_of_linked_list_section() {
 		ls.clicklsGetStartedBtn();
-		// ip.clickOnLinkedListGetStartedBtn();
-	}
+		}
 
 	@Then("The user should be directed to Linked List page")
 	public void the_user_should_be_directed_to_linked_list_page() {

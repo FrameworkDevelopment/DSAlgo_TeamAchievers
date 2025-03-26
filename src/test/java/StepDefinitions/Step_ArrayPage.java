@@ -2,7 +2,6 @@ package StepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import DriverManager.Driver_SetUp;
 import PageObjectModel.ArrayPom;
 import PageObjectModel.DataStructureIntroPom;
@@ -25,7 +24,7 @@ public class Step_ArrayPage {
 	public HomePom hp = new HomePom();
 	TreePom treePage = new TreePom();
 
-	//TC01
+//TC01
 @When("The user clicks the Getting Started button in Array Panel")
 public void the_user_clicks_the_getting_started_button_in_array_panel() {
  ap.clickarrayGetStartedBtn();
@@ -56,12 +55,12 @@ public void the_user_should_be_redirected_to_arrays_in_python_page() {
 public void the_user_is_in_the_arrays_in_python_page() {
 	
 	hp.openArray();
-	ap.clickarraysInPythonLink();
-
+	
 }
 
 @When("The user clicks Try Here button in Arrays in Python page")
 public void the_user_clicks_try_here_button_in_arrays_in_python_page() {
+	ap.clickarraysInPythonLink();
    	tp.clickTryHereBtn();
 }
 
@@ -82,15 +81,14 @@ public void the_user_should_be_redirected_to_arrays_using_list_page() {
 @Given("The user is in the Arrays Using List page")
 public void the_user_is_in_the_arrays_using_list_page() {
 	hp.openArray();
-	 ap.clickarraysUsingListLink();
-	
+	 
 }
 
 @When("The user clicks Try Here button in Arrays Using List page")
 public void the_user_clicks_try_here_button_in_arrays_using_list_page() {
+	ap.clickarraysUsingListLink();
 	tp.clickTryHereBtn();
 }
-
 
 //TC09, TC10,TC11 --> ran through existing methods and step def steps 
 
@@ -112,11 +110,12 @@ public void the_user_should_be_redirected_to_basic_operations_in_lists_page() {
 @Given("The user is in the Basic Operations in Lists page")
 public void the_user_is_in_the_basic_operations_in_lists_page() {
    hp.openArray();
-   ap.clickbasicOperationsInListsLink();
+  
 }
 
 @When("The user clicks Try Here button in Basic Operations in Lists page")
 public void the_user_clicks_try_here_button_in_basic_operations_in_lists_page() {
+    ap.clickbasicOperationsInListsLink();
 	tp.clickTryHereBtn();
 }
 
@@ -144,6 +143,7 @@ public void the_user_is_in_the_applications_of_array_page() {
 }
 @When("The user clicks Try Here button in Applications of Array page")
 public void the_user_clicks_try_here_button_in_applications_of_array_page() {
+	ap.clickapplicationsOfArrayLink();
 	tp.clickTryHereBtn();
 }
 

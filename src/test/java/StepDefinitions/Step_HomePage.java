@@ -1,13 +1,5 @@
 package StepDefinitions;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import PageObjectModel.HomePom;
 import PageObjectModel.IntroductionPagePom;
@@ -50,10 +42,11 @@ public class Step_HomePage {
 	
 }
 
-	//TC02
+	//TC01
 	@When("The user clicks the Data Structures dropdown") 
-	public void the_user_clicks_the_data_structures_dropdown() {
+	public void the_user_clicks_the_data_structures_dropdown() throws InterruptedException {
 		ip.clickDropdownToggle();
+		
 	}
 	
 	@Then("The user should be able to see six options like Arrays Linked List Stack Queue Tree Graph in dropdown menu")

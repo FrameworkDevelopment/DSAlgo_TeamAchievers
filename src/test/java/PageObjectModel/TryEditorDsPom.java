@@ -26,50 +26,39 @@ import Utilities.LoggerLoad;
 
 public class TryEditorDsPom {
 	
-	
+	WebDriver driver = Driver_SetUp.getDriver(); 
+	ExcelReader excelReader = new ExcelReader();
 
-	WebDriver driver = Driver_SetUp.getDriver(); // Initialize WebDriver
-	ExcelReader excelReader = new ExcelReader(); // Initialize ExcelReader utility
-
-	// Web Elements from Text Editor
 	public By tryHereButton = By.xpath("//a[@href='/tryEditor']");
 	public By textAreaForCode = By.xpath("//textarea[@tabindex='0']");
-	// public By textAreaForCode = By.xpath("//textarea[@tabindex='0' and
-	// @spellcheck='false']");
 	public By runButton = By.xpath("//button[text()='Run']");
 	public By consoleOutputMsg = By.xpath("//pre[@id='output']");
-
-	// Method to click the "Try Here" button
 	public void clickTryHereBtn() {
+		
 		Actions act = new Actions(driver);
 		act.moveToElement(driver.findElement(tryHereButton)).click().perform();
 		LoggerLoad.info("Clicked the Try Here button.");
 	}
 
-	// Method to enter code directly into the text area
 	public void enterTryHereCode(String pCode) {
 		System.out.println("driver--->"+driver);
 		Actions actions=new Actions(driver);
 		WebElement textArea = driver.findElement(textAreaForCode);
 		System.out.println("textArea--->"+textArea);
-		
-		
-		   // Clear the text area before entering new code (Windows specific)
-	    Keys ctrlKey = Keys.CONTROL;  // Use Ctrl for Windows
+				  
+	    Keys ctrlKey = Keys.CONTROL; 
 	    actions.moveToElement(textArea)
 	           .click()
-	           .keyDown(ctrlKey)                    // Hold the CONTROL key
-	           .sendKeys("a")                       // Select all text (Ctrl+A)
-	           .keyUp(ctrlKey)                      // Release CONTROL
-	           .sendKeys(Keys.BACK_SPACE)           // Press BACKSPACE to delete the selected text
+	           .keyDown(ctrlKey)                    
+	           .sendKeys("a")                       
+	           .keyUp(ctrlKey)                      
+	           .sendKeys(Keys.BACK_SPACE)           
 	           .perform();  
 		
-		//enter new code 
 		actions.moveToElement(textArea).click().sendKeys(pCode).build().perform(); 
 		LoggerLoad.info("Entered code into the text area: " + pCode);
 	}
 
-	// Overloaded method to read code from Excel and enter it into the text area
 	public void enterTryHereCode(String sheetName, int row)
 			throws InvalidFormatException, IOException, OpenXML4JException {
 		LoggerLoad.info("Reading code from Excel sheet: " + sheetName + ", Row: " + row);
@@ -95,13 +84,11 @@ public class TryEditorDsPom {
 		}
 	}
 
-	// Method to click the "Run" button
 	public void clickRunButton() {
 		driver.findElement(runButton).click();
 		LoggerLoad.info("Clicked the Run button.");
 	}
 
-	// Method to check if an alert is present
 	public boolean isAlertPresent() {
 		try {
 			System.out.println("Inside isAlertPresent driver--->" + driver);
@@ -121,10 +108,9 @@ public class TryEditorDsPom {
 		}
 	}
 
-	// Method to handle and log the alert message
 	public boolean handleAlert() {
-		//if (isAlertPresent()) {
-		System.out.println("driver.switchTo().alert()--->"+driver);
+		
+		LoggerLoad.info("driver.switchTo().alert()--->"+driver);
 		Alert alert = driver.switchTo().alert();
 		String alertMessage = alert.getText();
 		LoggerLoad.info("Alert message: " + alertMessage);
@@ -133,30 +119,25 @@ public class TryEditorDsPom {
 		System.out.println("Inside if --->");
 		return true;
 	}else {
-		System.out.println("Inside else --->");
+		LoggerLoad.info("Inside else --->");
 		return false;
 	}
-	//	} else {
-	//	LoggerLoad.warn("No alert to handle.");
-		// }
+
 	}
   
-    
-    public String getOutputText() {
+        public String getOutputText() {
         try {
-            // Wait for the console output element to be visible
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            
+        	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement consoleOutputElement = wait.until(ExpectedConditions.visibilityOfElementLocated(consoleOutputMsg));
             
-            // Retrieve the text from the element
-            String consoleOutput = consoleOutputElement.getText();
+             String consoleOutput = consoleOutputElement.getText();
             
-            // Log and return the output
             LoggerLoad.info("Console output text retrieved: " + consoleOutput);
             return consoleOutput;
         } catch (Exception e) {
             LoggerLoad.error("Error retrieving console output: " + e.getMessage());
-            return ""; // Return an empty string if an error occurs
+            return ""; 
         }
     }
 }
