@@ -5,21 +5,14 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-
 import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-
 import DriverManager.Driver_SetUp;
-import Utilities.ConfigReader;
 import Utilities.ExcelReader;
-import Utilities.ExcelReader1;
+import Utilities.LoggerLoad;
 
 public class LoginPom {
 
@@ -27,34 +20,25 @@ public class LoginPom {
 	ExcelReader excelReader = new ExcelReader();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	
-	//X paths for web elements on login page 
-	
-	
+		
 	public By usernameTextBox = By.id("id_username");
 	public By passwordTextBox = By.id("id_password");
 	public By loginBtn =   By.xpath("//input[@value='Login']");
-	
-	//public By loginBtn = By.xpath("//a[@href='/login']");
-	//public By loginBtn = By.xpath("input[type='submit']");
-	
 	public By alertMsg = By.cssSelector(".alert.alert-primary");
 	
-	//enter user name text box 
+	
 	public void enterUsernameTxt(String username) {
 		driver.findElement(usernameTextBox).sendKeys(username);
 		
 	}
-	//enter password text box
 	public void enterPasswordTxt(String password) {
 	    	driver.findElement(passwordTextBox).sendKeys(password);
 	    }
-	//click login button 
 	public void clickloginBtn() {
 	    	driver.findElement(loginBtn).click();
 	    }
 	
-	//Login with valid user and password details 
-	 public void loginWithValidCredentials(String username, String password) throws InterruptedException {
+    public void loginWithValidCredentials(String username, String password) throws InterruptedException {
 	    	driver.findElement(usernameTextBox).sendKeys(username);
 	    	driver.findElement(passwordTextBox).sendKeys(password);
 	    	driver.findElement(loginBtn).click();
@@ -66,19 +50,18 @@ public class LoginPom {
 
 		public void enterLoginFormFields(String sheetname, int row)
 				throws InvalidFormatException, IOException, OpenXML4JException, InterruptedException {
-			System.out.println("Inside enterLoginFormFields");
-			//List<Map<String, String>> testdata = excelReader1.getData("src/test/resources/Excel/TestData.xlsx", sheetname);
+			LoggerLoad.info("Inside enterLoginFormFields");
+	
 			List<Map<String, String>> testdata = excelReader.readFromExcel("src/test/resources/Excel/TestData.xlsx", sheetname);
-			System.out.println("logintestdata ---------> "+testdata);
+			LoggerLoad.info("logintestdata");
+		
 			
-			//Fetch and log the user name
 			String username = testdata.get(row).get("username");
-			System.out.println("Fetched username from Excel: " + username);
 			enterUsernameTxt(username);
+			LoggerLoad.info("Fetched username from Excel: " + username);
 			
-			//Fetch and log the password (optional, sensitive data warning)			
 			String password = testdata.get(row).get("password");
-			System.out.println("Fetched password from Excel: " + password);
+			LoggerLoad.info("Fetched password from Excel: " + password);
 			enterPasswordTxt(password);
 		}	
 
