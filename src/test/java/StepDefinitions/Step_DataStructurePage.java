@@ -121,6 +121,7 @@ public class Step_DataStructurePage {
 	@Then("The user should able to see an error message in alert window")
 	public void the_user_should_able_to_see_an_error_message_in_alert_window() {
 		Assert.assertEquals(true, tp.handleAlert());
+		LoggerLoad.info("AlertDisplay: " + tp.handleAlert());  
 	}
 
 //TC06

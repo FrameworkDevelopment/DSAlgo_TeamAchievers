@@ -1,7 +1,13 @@
 package PageObjectModel;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import DriverManager.Driver_SetUp;
 import Utilities.ExcelReader;
 import Utilities.LoggerLoad;
@@ -21,6 +27,7 @@ public class LinkedListPom {
 	public By lsTraversal = By.xpath("//a[@href='traversal']");
 	public By lsInsertion = By.xpath("//a[@href='insertion-in-linked-list']");
 	public By lsDeletion = By.xpath("//a[@href='deletion-in-linked-list']");
+	public By lsPracticeQns = By.linkText("Practice Questions");
 
 	public void clicklsGetStartedBtn() {
 		driver.findElement(lsGetStartedBtn).click();
@@ -64,4 +71,10 @@ public class LinkedListPom {
 		driver.findElement(lsDeletion).click();
 	    LoggerLoad.info("Clicking the LinkedList-Deletion page link");
 	 }
+	 
+	 public void clickpracticequestions() {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement practiceQns = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Practice Questions")));
+			practiceQns.click();
+		}
 }
