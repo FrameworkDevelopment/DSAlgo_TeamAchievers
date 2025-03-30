@@ -18,10 +18,13 @@ public class ArrayPom {
 	public By arraysUsingListLink = By.xpath("//a[@href='arrays-using-list']");
 	public By basicOperationsInListsLink = By.xpath("//a[@href='basic-operations-in-lists']");
 	public By applicationsOfArrayLink = By.xpath("//a[@href='applications-of-array']");
+	public By practiceQuestionsLink = By.linkText(("Practice Questions"));
 	public By searchTheArrayLink = By.xpath("//a[@href='/question/1']");
 	public By maxConsecutiveOnes = By.xpath("//a[@href='/question/2']");
 	public By findNumWithEvenNumOfDigits = By.xpath("//a[@href='/question/3']");
 	public By squaresOfAsortedArray = By.xpath("//a[@href='/question/4']");
+	public By runButton = By.xpath("//button[text()='Run']");
+	public By submitButton = By.xpath("/html/body/div/div/form/input[@type='submit']");
 	
 		
 		public void clickarrayGetStartedBtn() {
@@ -52,6 +55,11 @@ public class ArrayPom {
 			
 		}
 		
+		public void clickPracticeQuestionsLink() throws InterruptedException {
+			driver.findElement(practiceQuestionsLink).click();
+			LoggerLoad.info("Practice Questions link clicked");
+		}
+		
 		public void clickSearchTheArrayLink() {
 		    driver.findElement(searchTheArrayLink).click();
 		    LoggerLoad.info("Clicking Search the Array link");
@@ -71,6 +79,8 @@ public class ArrayPom {
 		    driver.findElement(squaresOfAsortedArray).click();
 		    LoggerLoad.info("Clicking Squares of a Sorted Array link");
 		}
+		
+		
 		    
 		public String getTextForElement(By locator) {
 		   String elementText = driver.findElement(locator).getText();

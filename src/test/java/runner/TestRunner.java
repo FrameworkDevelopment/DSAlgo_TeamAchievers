@@ -5,12 +5,17 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-	features =   "src/test/resources/features/UC01_homePage.feature", 
-		  
+	features = // {"src/test/resources/features"},
+               {"src/test/resources/features/UC04_dataStructureIntro.feature",
+                 "src/test/resources/features/UC01_homePage.feature"},
+                // "src/test/resources/features/UC02_registerPage.feature"},
+                 //"src/test/resources/features/UC03_1_loginAndBasicNavigation.feature",
+               	 //"src/test/resources/features/UC03_2_fullNavigationAndLogout.feature"},
+	  
         glue = {"StepDefinitions", "AppHooks"}, // Package containing step definitions
                monochrome = true, 
                dryRun=false,
-               tags = "@TC01 or @TC02",
+               //tags = "@TC01 or @TC02",
         plugin = {
                 "pretty", 
                 "html:target/cucumber-reports/cucumber.html", 
@@ -28,6 +33,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         return super.scenarios(); 
     }
       
-
 	}
     
