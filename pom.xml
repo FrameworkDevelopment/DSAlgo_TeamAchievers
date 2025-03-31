@@ -137,18 +137,18 @@
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-<dependency>
+<!--<dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
     <version>5.1.2</version>
 </dependency>
 
-<!-- chain test dependency-->
+<!- chain test dependency-->
 <!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-cucumber-jvm -->
 <dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>chaintest-cucumber-jvm</artifactId>
-    <version>1.0.11</version>
+    <version>1.0.12</version>
 </dependency>
 
 
