@@ -2,17 +2,16 @@ Feature: Data Structures-Introduction
 
  Background: User is logged into DS Algo Portal
  Given The user is logged into the DS Algo Portal with valid credentials
+ 
   
 
   #TC01 (Data Structures - Introduction page)
   Scenario: Verify that user is able to navigate to Data Structures - Introduction page
-   
-    When The user clicks the Get Started button of Data Structure Introduction section
-    Then The user should be directed to  Data Structure introduction Page
+      When The user clicks the Get Started button of Data Structure Introduction section
+      Then The user should be directed to  Data Structure introduction Page
 
   #TC02 ( Time Complexity page of DS Introduction page)
   Scenario: Verify that user is able to navigate to  Time Complexity page of DS Introduction page
-
     When The user clicks on Time Complexity link of DS Introduction page
     Then The user should be directed to Time Complexity page of DS Intro page
 

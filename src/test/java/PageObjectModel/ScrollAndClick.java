@@ -29,8 +29,7 @@ public class ScrollAndClick {
         js.executeScript("arguments[0].scrollIntoView(true);", timeComplexityLink);
         
         timeComplexityLink.click();
-     
-     
+          
 
     }
     

@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import java.io.IOException;
 import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
@@ -49,7 +50,10 @@ public class Step_DataStructurePage {
 	@When("The user clicks on Time Complexity link of DS Introduction page")
 	public void the_user_clicks_on_time_complexity_link_of_ds_introduction_page() throws InterruptedException {
 		dsIntro.clickGetStartedBtn();
+		LoggerLoad.info("Data Structures - Get Started button is clicked");
+		Thread.sleep(10);
 		sc.clickTimeComplexityLink();
+		LoggerLoad.info("Time Complexity Link is clicked");
 	}
 
 	@Then("The user should be directed to Time Complexity page of DS Intro page")
@@ -121,7 +125,7 @@ public class Step_DataStructurePage {
 	@Then("The user should able to see an error message in alert window")
 	public void the_user_should_able_to_see_an_error_message_in_alert_window() {
 		Assert.assertEquals(true, tp.handleAlert());
-		LoggerLoad.info("AlertDisplay: " + tp.handleAlert());  
+		LoggerLoad.info("Alert displayed");
 	}
 
 //TC06
@@ -163,9 +167,11 @@ public class Step_DataStructurePage {
 
 	@Then("The user should be redirected to Practice Questions page  of DS")
 	public void the_user_should_be_redirected_to_practice_questions_page_of_ds() {
-		//Assert.assertEquals(dsIntro.validatePageTitle(), "Assessment");
-		Assert.assertEquals("Practice Questions", dsIntro.validatePageTitle());
-		LoggerLoad.info("dsIntro.validatePageTitle()->" + dsIntro.validatePageTitle());
+		
+	Assert.assertEquals("Assessment", dsIntro.validatePageTitle());		
+	LoggerLoad.info("dsIntro.validatePageTitle()->" + dsIntro.validatePageTitle());
+		
+		}
+				
 	}
 
-}
