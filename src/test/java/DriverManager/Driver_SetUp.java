@@ -4,82 +4,151 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import Utilities.LoggerLoad;
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.openqa.selenium.edge.EdgeDriver;
+import Utilities.LoggerLoad;
 
 public class Driver_SetUp {
 
-    // ThreadLocal to store browser instance for each thread (parallel execution)
+    // ThreadLocal to ensure isolated browser sessions for parallel execution
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
-    // Method to initialize the WebDriver based on the browser name
-    public static WebDriver initializeBrowser(String browser) throws Exception {
+    public static synchronized WebDriver initializeBrowser(String browser) throws Exception {
+        if (threadDriver.get() == null) { // Ensure a new driver per thread
+            LoggerLoad.info("Initializing " + browser.toUpperCase() + " Driver for Thread: " + Thread.currentThread().getId());
 
-        // If the WebDriver is already initialized for the current thread, return it
-        if (threadDriver.get() != null) {
-            return threadDriver.get();  // Return the already initialized driver if it exists
+            WebDriver driver;
+            switch (browser.toLowerCase()) {
+                case "chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "edge":
+                    driver = new EdgeDriver();
+                    break;
+                default:
+                    throw new Exception("Unsupported browser: " + browser);
+            }
+
+            // Set WebDriver configurations
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
+
+            threadDriver.set(driver); // Store WebDriver instance in ThreadLocal
         }
-
-        WebDriver driver;
-
-        // Initialize WebDriver based on the specified browser
-        
-        switch (browser.toLowerCase()) {
-        case "chrome":
-        	WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            break;
-        case "firefox":
-        	WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-            break;
-        case "edge":
-            driver = new EdgeDriver();
-            WebDriverManager.edgedriver().setup();
-            break;
-        default:
-            throw new Exception("Unsupported browser: " + browser);
-    }
-//        if (browser.equalsIgnoreCase("chrome")) {
-//            driver = new ChromeDriver();
-//        } else if (browser.equalsIgnoreCase("firefox")) {
-//            driver = new FirefoxDriver();
-//        } else if (browser.equalsIgnoreCase("edge")) {
-//            driver = new EdgeDriver();
-//        } else {
-//            throw new Exception("Unsupported browser: " + browser);
-//        }
-
-        // Set WebDriver configurations (timeouts, window size, cookies)
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
-
-        // Store the driver in ThreadLocal for the current thread
-        threadDriver.set(driver);  // This will ensure it's only set once per thread
-        //return driver;
         return threadDriver.get();
     }
 
-    // Method to close the WebDriver instance (close the browser)
-    public static void closeDriver() {
+    public static synchronized void closeDriver() {
         WebDriver driver = threadDriver.get();
-     //   if (driver != null) {
-       //     driver.quit(); // Close the browser window
-         //   threadDriver.remove(); // Remove driver from ThreadLocal after quitting
-           // LoggerLoad.info("Close");
-       // }
+        if (driver != null) {
+            driver.quit();
+            threadDriver.remove();
+            LoggerLoad.info("Closed browser for Thread: " + Thread.currentThread().getId());
+        }
     }
 
-    // Method to get the WebDriver instance for the current thread
-    public static synchronized WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return threadDriver.get();
     }
-
-	
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//package DriverManager;
+//
+//import java.time.Duration;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.edge.EdgeDriver;
+//import Utilities.LoggerLoad;
+//
+//public class Driver_SetUp {
+//
+//    private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+//
+//    public static WebDriver initializeBrowser(String browser) throws Exception {
+//	
+//        if (threadDriver.get() == null) { // Ensure new driver per thread
+//            LoggerLoad.info("Initializing " + browser.toUpperCase() + " Driver for Thread: " + Thread.currentThread().getId());
+//
+//            switch (browser.toLowerCase()) {
+//                case "chrome":
+//                    threadDriver.set(new ChromeDriver());
+//                    break;
+//                case "firefox":
+//                    threadDriver.set(new FirefoxDriver());
+//                    break;
+//                case "edge":
+//                    threadDriver.set(new EdgeDriver());
+//                    break;
+//                default:
+//                    throw new Exception("Unsupported browser: " + browser);
+//            }
+//
+//            WebDriver driver = threadDriver.get();
+//            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//            driver.manage().window().maximize();
+//            driver.manage().deleteAllCookies();
+//        }
+//        return threadDriver.get();
+//    }
+//
+//    public static void closeDriver() {
+//        WebDriver driver = threadDriver.get();
+//        if (driver != null) {
+//            driver.quit();
+//            threadDriver.remove();
+//            LoggerLoad.info("Closed browser for Thread: " + Thread.currentThread().getId());
+//        }
+//    }
+//
+//    public static WebDriver getDriver() {
+//        return threadDriver.get();
+//    }
+//}
