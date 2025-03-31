@@ -84,7 +84,6 @@ public class Step_RegisterPage {
 
 	@Then("The user should be able to see error msg after entering invalid data")
 	public void the_user_should_be_able_to_see_error_msg_after_entering_invalid_data() {
-		//Assert.assertEquals(ip.getPageTitle(), "NumpyNinja");
 		expectedErrorMsg = "Invalid Username Entered";
 		actualErrorMsg = regPage.displayPasswordMismatchError();
 		Assert.assertEquals(actualErrorMsg, expectedErrorMsg);

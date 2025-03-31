@@ -663,8 +663,8 @@ public void the_user_clicks_practice_questions_link_from_introduction_page() {
 
 @Then("The user should see list of Practice Questions")
 public void the_user_should_see_list_of_practice_questions() {
-	Assert.fail();
-	LoggerLoad.info("Not finding any practice questions");
+	Assert.assertEquals("Assessment", dsIntro.validatePageTitle());		
+	LoggerLoad.info("dsIntro.validatePageTitle()->" + dsIntro.validatePageTitle());
 }
 
 //TC38
