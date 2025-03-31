@@ -4,8 +4,7 @@ Feature: DSportal App HomePage
  Background:
   Given The user enter correct dsAlgo portal URL <URL>
   Then The user clicks the Get Started button
-  
-        
+          
 #TC01
 @TC01
   Scenario: Verify that user is able to view options for Data Structures dropdown on home page without Sign in

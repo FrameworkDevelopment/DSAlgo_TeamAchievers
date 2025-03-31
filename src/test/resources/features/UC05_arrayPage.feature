@@ -8,7 +8,7 @@ Feature: Arrays
  
   #TC01 
   Scenario: Verify that user is able to navigate to Array page
-   Then The user should be redirected to Array page
+  Then The user should be redirected to Array page
 
   #--------------------------- (Arrays in Python)---------------------------
 
