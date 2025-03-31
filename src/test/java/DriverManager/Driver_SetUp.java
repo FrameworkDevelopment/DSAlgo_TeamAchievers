@@ -68,11 +68,11 @@ public class Driver_SetUp {
     // Method to close the WebDriver instance (close the browser)
     public static void closeDriver() {
         WebDriver driver = threadDriver.get();
-        if (driver != null) {
-            driver.quit(); // Close the browser window
-            threadDriver.remove(); // Remove driver from ThreadLocal after quitting
-            LoggerLoad.info("Close");
-        }
+     //   if (driver != null) {
+       //     driver.quit(); // Close the browser window
+         //   threadDriver.remove(); // Remove driver from ThreadLocal after quitting
+           // LoggerLoad.info("Close");
+       // }
     }
 
     // Method to get the WebDriver instance for the current thread
