@@ -5,13 +5,15 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-    features = {"src/test/resources/features/UC01_homePage.feature",
-   			"src/test/resources/features/UC02_registerPage.feature",
-  			"src/test/resources/features/UC03_1_loginAndBasicNavigation.feature",    
-  			"src/test/resources/features/UC03_2_fullNavigationAndLogout.feature",
-   			"src/test/resources/features/UC04_dataStructureIntro.feature",
-   			"src/test/resources/features/UC05_arrayPage.feature",
-          		"src/test/resources/features/UC06_linkedListPage.feature"},
+    features = //{"src/test/resources/features"},
+    
+               {"src/test/resources/features/UC01_homePage.feature",
+              "src/test/resources/features/UC02_registerPage.feature",
+  			  "src/test/resources/features/UC03_1_loginAndBasicNavigation.feature",    
+  			  "src/test/resources/features/UC03_2_fullNavigationAndLogout.feature",
+   			  "src/test/resources/features/UC04_dataStructureIntro.feature",
+   			  "src/test/resources/features/UC05_arrayPage.feature",
+          	  "src/test/resources/features/UC06_linkedListPage.feature"},
    
     glue = {"StepDefinitions", "AppHooks"}, // Package containing step definitions
     monochrome = true, 
@@ -29,7 +31,7 @@ import org.testng.annotations.DataProvider;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = true) 
+    @DataProvider(parallel = false) 
     public Object[][] scenarios() {
         return super.scenarios(); 
     }
