@@ -12,7 +12,7 @@ public class DataStructureIntroPom {
 	WebDriver driver = Driver_SetUp.getDriver();
 	ExcelReader excelReader = new ExcelReader();
 	
-	//public By dsGetStartedBtn = By.xpath("//a[text()='Get Started' and contains(@href, 'data-structures-introduction')]");
+	
 	public By dsGetStartedBtn = By.xpath("//a[contains(text(), 'Get Started') and contains(@href, 'data-structures-introduction')]");
 	public By timeComplexityLink = By.xpath("//a[contains(@href, 'time-complexity')]");
 	public By practiceQuestionsLink = By.xpath("//a[contains(text(),'Practice Questions')]");

@@ -5,8 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-    features = //{"src/test/resources/features"},
-    
+    features =     
                {"src/test/resources/features/UC01_homePage.feature",
               "src/test/resources/features/UC02_registerPage.feature",
   			  "src/test/resources/features/UC03_1_loginAndBasicNavigation.feature",    
@@ -15,7 +14,7 @@ import org.testng.annotations.DataProvider;
    			  "src/test/resources/features/UC05_arrayPage.feature",
           	  "src/test/resources/features/UC06_linkedListPage.feature"},
    
-    glue = {"StepDefinitions", "AppHooks"}, // Package containing step definitions
+    glue = {"StepDefinitions", "AppHooks"}, 
     monochrome = true, 
     dryRun = false,
     // tags = "@TC01 or @TC02",
