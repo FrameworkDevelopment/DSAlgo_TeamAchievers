@@ -11,8 +11,15 @@ import Utilities.ConfigReader;
 import Utilities.LoggerLoad;
 
 public class HomePom {
+	private WebDriver driver;
+	//public WebDriver driver = Driver_SetUp.getDriver();
 	
-	public WebDriver driver = Driver_SetUp.getDriver();
+	 public HomePom() {
+	        this.driver = Driver_SetUp.getDriver();
+	        if (this.driver == null) {
+	            throw new IllegalStateException("WebDriver is not initialized. Ensure initializeBrowser() is called first.");
+	        }
+	    }
     
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
 
@@ -35,9 +42,12 @@ public class HomePom {
 	public void openDSIntroductionUrl() {
 		driver.get(ConfigReader.geturlDataStructuresIntroduction());
 	}
-	public void openPracticeQnsPageUrl() {
-			driver.get(ConfigReader.geturlPracticeQnsDSIntroPage());
-	}
+//	public void openPracticeQnsPageUrl() {
+//			driver.get(ConfigReader.geturlPracticeQnsDSIntroPage());
+//	}
+	public void openPracticeQnsPageUrl(String url) {
+        driver.get(url);
+    }
 
 	public void ClickHomePageGetStartedButton() {
 		driver.findElement(getStartedButton).click();
