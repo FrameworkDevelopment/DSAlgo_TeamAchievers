@@ -11,7 +11,7 @@ public class ConfigReader {
 
     private static Properties properties = new Properties();
     
-    // Load configuration from properties file
+    
     public static void loadConfig() throws IOException {
         InputStream inputStream = ConfigReader.class.getClassLoader().getResourceAsStream("Config/config.properties");
         if (inputStream == null) {
@@ -20,12 +20,10 @@ public class ConfigReader {
         properties.load(inputStream);
     }
 
-    // Browser type for cross-browser testing
     public static String getBrowserType() {
         return properties.getProperty("browser", "chrome").toLowerCase();
     }
 
-    // Get base URL
     public static String getUrl() {
         return properties.getProperty("url");
     }
@@ -38,7 +36,7 @@ public class ConfigReader {
         return properties.getProperty("password");
     }
 
-    // Additional URLs for different modules
+    
     public static String geturlTimeComplexity() {
         return properties.getProperty("urlTimeComplexity");
     }
@@ -50,10 +48,6 @@ public class ConfigReader {
     public static String geturlPracticeQnsDSIntroPage() {
         return properties.getProperty("urlDataStructuresIntroPracticeQns");
     }
-
- 
-   
-
    
     public static String getUrlHome() {
         return properties.getProperty("urlHome");
@@ -66,15 +60,13 @@ public class ConfigReader {
     public static String getUrlArray() {
         return properties.getProperty("urlArray");
     }
-
-    // Method to initialize WebDriver from config
+   
     public static void initializeDriverFromConfig() throws Exception {
         loadConfig();
         String browser = getBrowserType();
         Driver_SetUp.initializeBrowser(browser);
     }
 
-    // Load properties manually
     public static Properties initializeProp() {
         Properties prop = new Properties();
         File profile = new File(System.getProperty("user.dir") + "/src/test/resources/Config/config.properties");

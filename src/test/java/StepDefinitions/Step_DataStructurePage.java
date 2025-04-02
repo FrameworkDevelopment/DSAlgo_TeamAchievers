@@ -2,7 +2,6 @@ package StepDefinitions;
 
 import java.io.IOException;
 import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
@@ -162,7 +161,7 @@ public class Step_DataStructurePage {
 	public void the_user_clicks_practice_questions_link_of_ds_page() {
 		dsIntro.clickGetStartedBtn();
 		sc.clickTimeComplexityLink();
-		hp.openPracticeQnsPageUrl();
+		dsIntro.clickPracticeQuestionsLink();
 	}
 
 	@Then("The user should be redirected to Practice Questions page  of DS")
@@ -174,4 +173,3 @@ public class Step_DataStructurePage {
 		}
 				
 	}
-
